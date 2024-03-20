@@ -162,7 +162,6 @@ LongFraction LongFraction::operator+(const LongFraction other) const {
 
     std::vector<uint> left = this->_merge_digits(this->_digit, this->_fill(this->_fraction));
     std::vector<uint> right = other._merge_digits(other._digit, other._fill(other._fraction));
-    // считаем что левое слагаемое длинее чем правое
     if (left.size() < right.size())
         std::swap(left, right);
     std::vector<uint> res = this->_sum_digits(left, right);
@@ -197,7 +196,6 @@ LongFraction LongFraction::operator-(const LongFraction other) const {
     if (*this < other)
         return -(other - *this);
 
-    // Осталась ситуация, когда из большего положительного числа вычитаем меньшее
     std::vector<uint> left = this->_merge_digits(this->_digit, this->_fill(this->_fraction));
     std::vector<uint> right = other._merge_digits(other._digit, other._fill(other._fraction));
     std::vector<uint> res = this->_diff_digits(left, right);
@@ -231,7 +229,6 @@ LongFraction LongFraction::operator*(const LongFraction other) const {
 
     std::vector<uint> left = this->_merge_digits(this->_digit, this->_fraction);
     std::vector<uint> right = other._merge_digits(other._digit, other._fraction);
-    // считаем что левое слагаемое длинее чем правое
     if (left.size() < right.size())
         std::swap(left, right);
 
